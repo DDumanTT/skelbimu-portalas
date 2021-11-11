@@ -8,10 +8,49 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-300">
-                    <p class="text-4xl mb-10">{{ $post->title }}</p>
-                    <p class="break-words">{{ $post->body }}</p>
+                <div class="border-b border-gray-300 p-6">
+                    <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="">
+                            <div class="mb-1">
+                                @if (count($post->images()->get()) == 0)
+                                <img src="{{ asset('/storage/images/placeholder-image.png') }}" class="object-contain" />
+                                @else
+                                <img src="{{ asset('/storage/' . $post->images()->first()->filepath) }}" class="object-contain" />
+                            </div>
+                            <div class="grid grid-cols-2 gap-1">
+                                @if (count($post->images()->get()) != 1)
+                                @foreach ($post->images()->get() as $image)
+                                @if ($loop->first) @continue @endif
+                                <div class="max-h-48 overflow-hidden flex items-center">
+                                    <img src="{{ asset('/storage/' . $image->filepath) }}" class="object-contain" />
+                                </div>
+                                @endforeach
+                                @endif
+                                @endif
+                            </div>
+                        </div>
+                        <div class="">
+                            <p class="border-b text-4xl mb-5 break-words">{{ $post->title }}</p>
+                            <p class="break-words">{{ $post->body }}</p>
+                        </div>
+                    </div>
+                    @auth
+                    @if (Auth::user()->id == $post->user->id || Auth::user()->role == 1)
+                    <!-- @roles(['client', 'mod']) -->
+                    <div class='inline-flex w-full justify-end mb-2'>
+                        <form method="POST" action="{{ route('delete-post', $post) }}">
+                            @csrf
+                            @method('DELETE')
+                            <x-button name="post" class="ml-4 bg-red-600">
+                                {{ __('Trinti skelbimą') }}
+                            </x-button>
+                        </form>
+                    </div>
+                    <!-- @endroles -->
+                    @endif
+                    @endauth
                 </div>
+
                 <div class="p-6 border-b border-gray-300">
                     <p class="mb-5">{{ 'Žinutės (' . count($messages) . ')'  }}</p>
                     @foreach ($messages as $message)

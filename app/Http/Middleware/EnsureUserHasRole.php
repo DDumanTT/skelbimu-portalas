@@ -15,9 +15,9 @@ class EnsureUserHasRole
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next, $role)
+    public function handle(Request $request, Closure $next, ...$role)
     {
-        if (Auth::check() && array_key_exists($request->user()->role, config('roles')) && config('roles')[$request->user()->role] == $role) {
+        if (Auth::check() && array_key_exists($request->user()->role, config('roles')) && in_array(config('roles')[$request->user()->role], $role)) {
             return $next($request);
         } else {
             return redirect('/login');

@@ -19,7 +19,7 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100 shadow">
+    <div class="min-h-screen bg-gray-100 shadow flex flex-col">
         @include('layouts.navigation')
 
         <!-- Page Heading -->
@@ -30,14 +30,18 @@
         </header>
 
         <!-- Page Content -->
-        <main>
+        <main class="flex-grow">
             {{ $slot }}
         </main>
 
         <!-- Page Footer -->
-        <footer class="bg-gray-500">
+        <footer class="bg-gray-500 h-50 w-full">
             <div class="py-6 px-4 sm:px-6 lg:px-8">
-                <x-application-logo class="block h-10 w-auto fill-current text-gray-600 m-auto" />
+                <p class="block w-auto font-black text-sm text-gray-600 text-center">SKELBIMŲ PORTALAS</p>
+                <br>
+                <p class="block w-auto font-black text-xs text-gray-600 text-center">Domantas Stakionis</p>
+                <p class="block w-auto font-black text-xs text-gray-600 text-center">Kompiuterių tinklai ir internetinės technologijos</p>
+                <p class="block w-auto font-black text-xs text-gray-600 text-center">(T120B145)</p>
             </div>
         </footer>
     </div>

@@ -33,6 +33,8 @@ Route::get('/users_list', function () {
 
 Route::post('/new_post', [PostController::class, 'store'])->middleware('auth')->name('new-post');
 
+Route::delete('/delete_post/{post}', [PostController::class, 'delete'])->middleware('role:client,mod')->name('delete-post');
+
 Route::post('/change_roles', [UserController::class, 'change_roles'])->middleware('role:admin')->name('change-roles');
 
 Route::get('/post/{id}', function ($id) {
