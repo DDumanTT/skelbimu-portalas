@@ -2,7 +2,7 @@
 
 <div class="border m-2 rounded-2xl shadow-md transition hover:bg-gray-100">
     <a href="/post/{{ $post->id }}">
-        <img src="{{ count($post->images()->get()) != 0 ? asset('/storage/' . $post->images()->first()->filepath) : asset('/storage/images/placeholder-image.png') }}" class="rounded-t-2xl border-b object-cover max-h-3xl" />
+        <img src="{{ count($post->images()->get()) != 0 ? asset('/storage/' . $post->images()->first()->filepath) : asset('/placeholder-image.png') }}" class="rounded-t-2xl border-b object-cover max-h-3xl" />
         <div class="p-5">
             <p class="text-xl break-words">
                 {{ $post->title }}

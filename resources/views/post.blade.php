@@ -13,7 +13,7 @@
                         <div class="">
                             <div class="mb-1">
                                 @if (count($post->images()->get()) == 0)
-                                <img src="{{ asset('/storage/images/placeholder-image.png') }}" class="object-contain" />
+                                <img src="{{ asset('/placeholder-image.png') }}" class="object-contain" />
                                 @else
                                 <img src="{{ asset('/storage/' . $post->images()->first()->filepath) }}" class="object-contain w-full" />
                             </div>

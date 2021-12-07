@@ -48,7 +48,7 @@ class PostController extends Controller
                 $img->resize(320, 240, function ($constraint) {
                     $constraint->aspectRatio();
                 });
-                $img->insert(storage_path('app/public/images/watermark.png'));
+                $img->insert(public_path('/watermark.png'));
                 $img->save(storage_path('app/public/images/' . $path));
                 Image::create(['filepath' => "images/" . $path, 'post_id' => $post_id]);
             }
@@ -84,7 +84,7 @@ class PostController extends Controller
                 $img->resize(320, 240, function ($constraint) {
                     $constraint->aspectRatio();
                 });
-                $img->insert(storage_path('app/public/images/watermark.png'));
+                $img->insert(public_path('/watermark.png'));
                 $img->save(storage_path('app/public/images/' . $path));
                 Image::create(['filepath' => "images/" . $path, 'post_id' => $post->id]);
             }
