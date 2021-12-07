@@ -10,7 +10,7 @@
             <p class="text-gray-600 truncate ...">
                 {{ $post->body }}
             </p>
-            <p class="mt-2 border-t flex justify-end text-xs text-gray-500">
+            <p class="pt-2 border-t flex justify-end text-xs text-gray-500">
                 {{ $post->created_at }}
             </p>
         </div>

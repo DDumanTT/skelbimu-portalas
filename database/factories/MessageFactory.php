@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use App\Models\Message;
+use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class MessageFactory extends Factory
@@ -16,7 +18,9 @@ class MessageFactory extends Factory
     {
         return [
             'text' => $this->faker->sentence(),
-            'user_id' => User::inRandomOrder()->get(),
+            'date' => $this->faker->date(),
+            'post_id' => Post::inRandomOrder()->first()->id,
+            'user_id' => User::inRandomOrder()->first()->id
         ];
     }
 }

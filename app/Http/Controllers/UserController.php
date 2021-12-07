@@ -9,8 +9,6 @@ class UserController extends Controller
 {
     public function change_roles(Request $request)
     {
-        // unset($request->all()["_token"]);
-        // dump($request->all());
         foreach ($request->all() as $id => $role) {
             if ($id == '_token') {
                 continue;

@@ -28,7 +28,7 @@ return [
         'numeric' => 'The :attribute must be between :min and :max.',
         'file' => 'The :attribute must be between :min and :max kilobytes.',
         'string' => 'The :attribute must be between :min and :max characters.',
-        'array' => 'The :attribute must have between :min and :max items.',
+        'array' => 'Galite įkelti iki :max nuotraukų.',
     ],
     'boolean' => 'The :attribute field must be true or false.',
     'confirmed' => 'Slaptažodižiai nesutampa.',

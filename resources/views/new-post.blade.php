@@ -9,6 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
+                    <x-auth-validation-errors class="mb-4" :errors="$errors" />
                     <form method="POST" action="{{ route('new-post') }}" enctype="multipart/form-data">
                         @csrf
                         <!-- Title -->
@@ -22,6 +23,12 @@
                             <x-label for="body" :value="__('Tekstas')" />
 
                             <x-text-area id="body" class="flex mt-1 w-full" rows="15" type="text" name="body" :value="old('body')" required autofocus />
+                        </div>
+                        <!-- Price -->
+                        <div class="mt-4">
+                            <x-label for="price" :value="__('Kaina')" />
+
+                            <x-input id="price" class="flex mt-1 w-full" type="number" min="0" step=".01" name="price" :value="old('price')" autofocus />
                         </div>
                         <div class="mt-4">
                             <p>Galite įkelti iki 5 nuotraukų.</p>

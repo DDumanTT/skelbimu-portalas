@@ -17,8 +17,9 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('title');
             $table->longText('body');
-            $table->string('img_path');
+            $table->float('price')->nullable();
             $table->string('status');
+            $table->unsignedInteger('views');
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

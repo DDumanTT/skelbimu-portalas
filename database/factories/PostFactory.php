@@ -16,10 +16,10 @@ class PostFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(4),
-            'body' => $this->faker->paragraph(5),
-            'img_path' => $this->faker->imageUrl(),
-            'status' => array_rand(['active', 'completed', 'deleted']),
-            'user_id' => User::inRandomOrder()->get(),
+            'body' => $this->faker->paragraph(50),
+            'price' => $this->faker->randomFloat(2, 0, 100000),
+            'status' => $this->faker->randomElement(['active', 'completed', 'deleted']),
+            'views' => rand(0, 10000)
         ];
     }
 }
